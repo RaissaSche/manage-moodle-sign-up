@@ -1,4 +1,4 @@
-package br.com.ntm.managemoodlesignup;
+package br.com.ntm.managemoodlesignup.classes;
 
 import java.util.ArrayList;
 import java.util.List;

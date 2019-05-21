@@ -1,6 +1,7 @@
-package br.com.ntm.managemoodlesignup;
+package br.com.ntm.managemoodlesignup.classes;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+import br.com.ntm.managemoodlesignup.exceptions.ColumnNotFoundException;
+import br.com.ntm.managemoodlesignup.exceptions.EmailNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;

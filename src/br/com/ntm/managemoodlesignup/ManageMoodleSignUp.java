@@ -1,8 +1,6 @@
 package br.com.ntm.managemoodlesignup;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import br.com.ntm.managemoodlesignup.classes.ManageFile;
 
 public class ManageMoodleSignUp {
 

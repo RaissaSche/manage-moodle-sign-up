@@ -1,4 +1,4 @@
-package br.com.ntm.managemoodlesignup;
+package br.com.ntm.managemoodlesignup.classes;
 
 public class CreateUserAndPassword {
 
