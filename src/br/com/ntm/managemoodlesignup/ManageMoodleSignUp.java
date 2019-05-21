@@ -8,7 +8,6 @@ public class ManageMoodleSignUp {
 
     public static void main(String[] args) {
 
-        CreateUserAndPassword createUserAndPassword = new CreateUserAndPassword();
         ManageFile readAndWriteFile = new ManageFile();
 
         readAndWriteFile.readAndWriteFile();

@@ -6,6 +6,8 @@ import java.util.List;
 
 public class ManageFile {
 
+    CreateMoodleReadySpreadsheet createMoodleReadySpreadsheet = new CreateMoodleReadySpreadsheet();
+    FindColumn findColumn = new FindColumn();
     //ler do arquivo
 //guardar em uma matriz
     //trim every variable!!
@@ -15,34 +17,6 @@ public class ManageFile {
     //THE SUBLISTS ARE ROWS, THE STRINGS ARE COLUMNS
     //username password \firstname lastname email\ course1
 //exportar para csv (ler do original o nome e concatenar com algo tipo "moodle-ready")
-
-    public void findEmailColumn(List<List<String>> spreadsheetInfo) {
-
-        List<String> firstRow = spreadsheetInfo.get(0);
-
-        for (int i = 0; i < firstRow.size(); i++) {
-
-            if (firstRow.get(i).toLowerCase().contains("email")
-                    || firstRow.get(i).toLowerCase().contains("e-mail")) {
-
-                System.out.println("Achei!");
-            }
-        }
-    }
-
-    public void findColumn(String columnName, List<List<String>> spreadsheetInfo){
-        //columnName variable must be lower-case
-
-        List<String> firstRow = spreadsheetInfo.get(0);
-
-        for (int i = 0; i < firstRow.size(); i++) {
-
-            if (firstRow.get(i).toLowerCase().equals(columnName)) {
-
-                System.out.println("Achei! " + firstRow.get(i));
-            }
-        }
-    }
 
     public boolean lineIsResidue(String line) {
 
@@ -68,22 +42,18 @@ public class ManageFile {
                     String auxLine[] = line.split("\t");
 
                     for (String info : auxLine) {
-                        //add reorganizing here maybe?
                         info = info.trim();
                         spreadsheetInfo.get(rowNumber).add(info);
                     }
                     System.out.println(spreadsheetInfo.get(rowNumber));
-                    //System.out.println(spreadsheetInfo.get(rowNumber).get(0));
                     rowNumber++;
 
                     outputStream.write(line);
                     outputStream.newLine();
                 }
             }
-
-           // findEmailColumn(spreadsheetInfo);
-
-            findColumn("sobrenome", spreadsheetInfo);
+            //createMoodleReadySpreadsheet.create(spreadsheetInfo);
+            findColumn.findEmail(spreadsheetInfo);
 
         } catch (IOException e) {
             e.printStackTrace();
