@@ -6,18 +6,40 @@ import java.util.List;
 
 public class ManageFile {
 
-    public void findEmailColumn(List<List<String>> spreadsheetInfo) {
+    //ler do arquivo
+//guardar em uma matriz
+    //trim every variable!!
+    //throw things from strings to a (dynamic) matrix!! update: use collections!!
+    // ------------------------------------------------------------------------
+//adicionar as colunas que preciso, jogando com as variáveis
+    //THE SUBLISTS ARE ROWS, THE STRINGS ARE COLUMNS
+    //username password \firstname lastname email\ course1
+//exportar para csv (ler do original o nome e concatenar com algo tipo "moodle-ready")
 
-        //tem que ter um jeito mais inteligente de checar isso, na boa
+    public void findEmailColumn(List<List<String>> spreadsheetInfo) {
 
         List<String> firstRow = spreadsheetInfo.get(0);
 
         for (int i = 0; i < firstRow.size(); i++) {
 
-            if (firstRow.get(i).contains("email") || firstRow.get(i).contains("e-mail")
-                    || firstRow.get(i).contains("Email") || firstRow.get(i).contains("E-mail")) {
+            if (firstRow.get(i).toLowerCase().contains("email")
+                    || firstRow.get(i).toLowerCase().contains("e-mail")) {
 
                 System.out.println("Achei!");
+            }
+        }
+    }
+
+    public void findColumn(String columnName, List<List<String>> spreadsheetInfo){
+        //columnName variable must be lower-case
+
+        List<String> firstRow = spreadsheetInfo.get(0);
+
+        for (int i = 0; i < firstRow.size(); i++) {
+
+            if (firstRow.get(i).toLowerCase().equals(columnName)) {
+
+                System.out.println("Achei! " + firstRow.get(i));
             }
         }
     }
@@ -36,7 +58,7 @@ public class ManageFile {
         try (BufferedReader inputStream = new BufferedReader(new
                 FileReader("C:/Users/733120/Desktop/Scratch (respostas).tsv"));
              BufferedWriter outputStream = new BufferedWriter(new
-                     FileWriter("C:/Users/733120/Desktop/scratch.csv"))) {
+                     FileWriter("C:/Users/733120/Desktop/scratch_pronto_pro_moodle.csv"))) {
             String line;
 
             while ((line = inputStream.readLine()) != null) {
@@ -59,7 +81,9 @@ public class ManageFile {
                 }
             }
 
-            findEmailColumn(spreadsheetInfo);
+           // findEmailColumn(spreadsheetInfo);
+
+            findColumn("sobrenome", spreadsheetInfo);
 
         } catch (IOException e) {
             e.printStackTrace();
