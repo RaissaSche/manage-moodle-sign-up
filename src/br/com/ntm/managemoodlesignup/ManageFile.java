@@ -6,15 +6,10 @@ import java.util.List;
 
 public class ManageFile {
 
-    /*public boolean lineHasInfo(String line){
+    public boolean lineIsResidue(String line){
 
-        return (!line.isEmpty());
-    }*/
-
-    public boolean lineIsntOnlyTabulation(String line, int lineFields){
-
-        String testLine = new String(new char[lineFields]).replace("\0", "\t");
-        return !line.matches(testLine);
+        String testLine = new String(new char[line.length()]).replace("\0", "\t");
+        return line.matches(testLine) || line.isEmpty();
     }
 
     public void readAndWriteFile() {
@@ -23,18 +18,16 @@ public class ManageFile {
         int rowNumber = 0;
 
         try (BufferedReader inputStream = new BufferedReader(new
-                FileReader("C:/Users/733120/Desktop/Scratch (respostas).txt"));
+                FileReader("C:/Users/733120/Desktop/Scratch (respostas).tsv"));
              BufferedWriter outputStream = new BufferedWriter(new
                      FileWriter("C:/Users/733120/Desktop/scratch.csv"))) {
             String line;
-            int lineFields = 0;
 
-            while ((line = inputStream.readLine()) != null || lineIsntOnlyTabulation(line, lineFields)) {
+            while ((line = inputStream.readLine()) != null) {
 
-               // if (lineHasInfo(line)) {
+                if (!lineIsResidue(line)) {
                     spreadsheetInfo.add(new ArrayList<>());
                     String auxLine[] = line.split("\t");
-                    lineFields = auxLine.length;
 
                     for (String info : auxLine) {
                         //add reorganizing here maybe?
@@ -55,7 +48,7 @@ public class ManageFile {
                 } else {
                     throw new EmailNotFoundException();
                 }*/
-               // }
+                }
             }
 
             System.exit(0);
