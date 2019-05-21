@@ -6,7 +6,23 @@ import java.util.List;
 
 public class ManageFile {
 
-    public boolean lineIsResidue(String line){
+    public void findEmailColumn(List<List<String>> spreadsheetInfo) {
+
+        //tem que ter um jeito mais inteligente de checar isso, na boa
+
+        List<String> firstRow = spreadsheetInfo.get(0);
+
+        for (int i = 0; i < firstRow.size(); i++) {
+
+            if (firstRow.get(i).contains("email") || firstRow.get(i).contains("e-mail")
+                    || firstRow.get(i).contains("Email") || firstRow.get(i).contains("E-mail")) {
+
+                System.out.println("Achei!");
+            }
+        }
+    }
+
+    public boolean lineIsResidue(String line) {
 
         String testLine = new String(new char[line.length()]).replace("\0", "\t");
         return line.matches(testLine) || line.isEmpty();
@@ -14,7 +30,7 @@ public class ManageFile {
 
     public void readAndWriteFile() {
 
-        List<List<String>> spreadsheetInfo = new ArrayList<List<String>>();
+        List<List<String>> spreadsheetInfo = new ArrayList<>();
         int rowNumber = 0;
 
         try (BufferedReader inputStream = new BufferedReader(new
@@ -40,18 +56,10 @@ public class ManageFile {
 
                     outputStream.write(line);
                     outputStream.newLine();
-
-                    //tem que ter um jeito mais inteligente de checar isso, na boa
-               /* if (spreadsheetInfo.contains("email") || spreadsheetInfo.contains("e-mail")
-                        || spreadsheetInfo.contains("Email") || spreadsheetInfo.get(0).get(5).contains("E-mail")) {
-
-                } else {
-                    throw new EmailNotFoundException();
-                }*/
                 }
             }
 
-            System.exit(0);
+            findEmailColumn(spreadsheetInfo);
 
         } catch (IOException e) {
             e.printStackTrace();

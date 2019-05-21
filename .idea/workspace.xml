@@ -48,24 +48,25 @@
     <session id="132308491">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.49" value="1" />
+          <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1426" />
+          <entry key="java" value="1780" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1426" />
+          <entry key="JAVA" value="1780" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -85,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/ntm/managemoodlesignup/ManageMoodleSignUp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+            <state relative-caret-position="298">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,8 +98,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/com/ntm/managemoodlesignup/ManageFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
+            <state relative-caret-position="264">
+              <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,6 +146,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>line</find>
+      <find>for</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,7 +170,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="100" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -179,6 +181,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,8 +205,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -283,37 +285,37 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>line.matches(testLine) || line.isEmpty()</expression-string>
+        <expression-string>firstRow.get(i)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>inputStream.readLine()</expression-string>
+        <expression-string>firstRow.get(i).contains(&quot;E-mail&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>line</expression-string>
+        <expression-string>firstRow</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(line = inputStream.readLine()) != null</expression-string>
+        <expression-string>spreadsheetInfo.get(0).get(3).contains(&quot;E-mail&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>line = inputStream.readLine() != null</expression-string>
+        <expression-string>spreadsheetInfo.get(0).get(3)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>line = inputStream.readLine()) != null</expression-string>
+        <expression-string>spreadsheetInfo.get(0).get(5)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(line = inputStream.readLine()) != null || line.matches(&quot;\t&quot;)</expression-string>
+        <expression-string>spreadsheetInfo.get(0).get(0)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -360,8 +362,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/ntm/managemoodlesignup/ManageMoodleSignUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        <state relative-caret-position="298">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -370,8 +372,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/ntm/managemoodlesignup/ManageFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
+        <state relative-caret-position="264">
+          <caret line="39" column="24" lean-forward="true" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

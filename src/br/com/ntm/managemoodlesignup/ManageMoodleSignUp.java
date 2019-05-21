@@ -11,7 +11,7 @@ public class ManageMoodleSignUp {
     //trim every variable!!
     //throw things from strings to a (dynamic) matrix!! update: use collections!!
     // ------------------------------------------------------------------------
-//adicionar as colunas que que preciso, jogando com as variáveis
+//adicionar as colunas que preciso, jogando com as variáveis
     //username password \firstname lastname email\ course1
 //exportar para csv (ler do original o nome e concatenar com algo tipo "moodle-ready")
 
