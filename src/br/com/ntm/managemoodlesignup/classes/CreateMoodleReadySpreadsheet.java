@@ -24,6 +24,7 @@ public class CreateMoodleReadySpreadsheet {
     public void create(List<List<String>> spreadsheetInfo) {
 
         List<String> nameRow = findColumn.find("nome", spreadsheetInfo);
+        List<String> emailRow = findColumn.findEmail(spreadsheetInfo);
 
         for (int i = 0; i < 6; i++){
             spreadsheetMoodleReady.add(new ArrayList<>());
@@ -46,10 +47,12 @@ public class CreateMoodleReadySpreadsheet {
         // lastname - 3
         //get from spreadsheet
         spreadsheetMoodleReady.get(3).add("lastname");
+        createLastName(nameRow);
 
         // email - 4
         //get from spreadsheet
         spreadsheetMoodleReady.get(4).add("email");
+        createEmail(emailRow);
 
         // course1 - 5
         //ask for input on the program somehow
@@ -57,6 +60,8 @@ public class CreateMoodleReadySpreadsheet {
     }
 
     private void createUsername(List<String> nameRow) {
+
+        System.out.println("username");
 
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
@@ -70,6 +75,8 @@ public class CreateMoodleReadySpreadsheet {
 
     private void createPassword(List<String> nameRow) {
 
+        System.out.println("password");
+
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 name = stripAccents(name);
@@ -82,10 +89,12 @@ public class CreateMoodleReadySpreadsheet {
 
     private void createFirstName(List<String> nameRow) {
 
+        System.out.println("firstname");
+
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 String[] nameAux = name.split(" ");
-                spreadsheetMoodleReady.get(1).add(nameAux[0]);
+                spreadsheetMoodleReady.get(2).add(nameAux[0]);
                 System.out.println(nameAux[0]);
             }
         }
@@ -93,11 +102,25 @@ public class CreateMoodleReadySpreadsheet {
 
     private void createLastName(List<String> nameRow) {
 
+        System.out.println("lastname");
+
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 String[] nameAux = name.split(" ");
-                spreadsheetMoodleReady.get(1).add(nameAux[0]);
-                System.out.println(nameAux[0]);
+                spreadsheetMoodleReady.get(3).add(nameAux[nameAux.length - 1]);
+                System.out.println(nameAux[nameAux.length - 1]);
+            }
+        }
+    }
+
+    private void createEmail(List<String> emailRow){
+
+        System.out.println("email");
+
+        for (String email : emailRow) {
+            if (!email.toLowerCase().contains("email") && !email.toLowerCase().contains("e-mail")) {
+                spreadsheetMoodleReady.get(3).add(email);
+                System.out.println(email);
             }
         }
     }
