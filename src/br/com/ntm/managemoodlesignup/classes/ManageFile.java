@@ -1,5 +1,8 @@
 package br.com.ntm.managemoodlesignup.classes;
 
+import br.com.ntm.managemoodlesignup.exceptions.WrongFileExtensionException;
+
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +17,19 @@ public class ManageFile {
         return line.matches(testLine) || line.isEmpty();
     }
 
-    private String newFilePath(String originalPath){
+    private String newFilePath(String originalPath) {
         //get original directory + add some stuff to the end (but before the csv)
         //separate string by .tsv
         //if xabu, throw exception
         //add pronto_pro_moodle.csv to first option
-
-        String[] splitPath = originalPath.split(".tsv");
-        splitPath[0] += "_pronto_pro_moodle.csv";
-
-        return splitPath[0];
+        if(originalPath.contains(".tsv")){
+            String[] splitPath = originalPath.split(".tsv");
+            splitPath[0] += "_pronto_pro_moodle.csv";
+            return splitPath[0];
+        }
+        else{
+            throw new WrongFileExtensionException();
+        }
     }
 
     public void readAndWriteFile(String filePath) {

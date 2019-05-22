@@ -1,7 +1,6 @@
 package br.com.ntm.managemoodlesignup.classes;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 
 public class ManageGUI {
@@ -16,7 +15,17 @@ public class ManageGUI {
         if (answer == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             System.out.println(file.getAbsolutePath());
-            manageFile.readAndWriteFile(file.getAbsolutePath());
+
+            try {
+                manageFile.readAndWriteFile(file.getAbsolutePath());
+            } catch (Exception e) {
+                System.out.println("I caught: " + e);
+                JOptionPane.showMessageDialog(fileChooser,
+                        e.getMessage(),
+                        "Aviso!",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+
         } else {
             // dialogo cancelado
         }
