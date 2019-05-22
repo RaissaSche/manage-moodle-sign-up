@@ -11,10 +11,12 @@ public class CreateMoodleReadySpreadsheet {
 //guardar em uma matriz
     //trim every variable!!
     //throw things from strings to a (dynamic) matrix!! update: use collections!!
-    // ------------------------------------------------------------------------
 //adicionar as colunas que preciso, jogando com as variáveis
     //THE SUBLISTS ARE ROWS, THE STRINGS ARE COLUMNS
+    // ------------------------------------------------------------------------
     //username password \firstname lastname email\ course1
+    //add GUI
+    //come back to course1 and file names
 //exportar para csv (ler do original o nome e concatenar com algo tipo "moodle-ready")
 
     FindColumn findColumn = new FindColumn();
@@ -26,7 +28,7 @@ public class CreateMoodleReadySpreadsheet {
         List<String> nameRow = findColumn.find("nome", spreadsheetInfo);
         List<String> emailRow = findColumn.findEmail(spreadsheetInfo);
 
-        for (int i = 0; i < 6; i++){
+        for (int i = 0; i < 6; i++) {
             spreadsheetMoodleReady.add(new ArrayList<>());
         }
 
@@ -35,22 +37,18 @@ public class CreateMoodleReadySpreadsheet {
         createUsername(nameRow);
 
         // password - 1
-        //generate from spreadsheet name + @ + current year
         spreadsheetMoodleReady.get(1).add("password");
         createPassword(nameRow);
 
         // \firstname - 2
-        //get from spreadsheet
         spreadsheetMoodleReady.get(2).add("firstname");
         createFirstName(nameRow);
 
         // lastname - 3
-        //get from spreadsheet
         spreadsheetMoodleReady.get(3).add("lastname");
         createLastName(nameRow);
 
         // email - 4
-        //get from spreadsheet
         spreadsheetMoodleReady.get(4).add("email");
         createEmail(emailRow);
 
@@ -67,7 +65,8 @@ public class CreateMoodleReadySpreadsheet {
             if (!name.toLowerCase().contains("nome")) {
                 name = stripAccents(name);
                 String[] nameAux = name.split(" ");
-                spreadsheetMoodleReady.get(0).add(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase());
+                spreadsheetMoodleReady.get(0).add(nameAux[0].toLowerCase() +
+                        nameAux[nameAux.length - 1].toLowerCase());
                 System.out.println(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase());
             }
         }
@@ -113,7 +112,7 @@ public class CreateMoodleReadySpreadsheet {
         }
     }
 
-    private void createEmail(List<String> emailRow){
+    private void createEmail(List<String> emailRow) {
 
         System.out.println("email");
 

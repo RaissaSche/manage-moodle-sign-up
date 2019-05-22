@@ -23,8 +23,6 @@ public class FindColumn {
                     emailColumn.add(info.get(i));
                 }
 
-                System.out.println(emailColumn);
-
                 return emailColumn;
             }
         }
