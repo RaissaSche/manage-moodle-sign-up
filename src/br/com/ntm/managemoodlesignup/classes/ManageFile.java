@@ -8,21 +8,32 @@ public class ManageFile {
 
     CreateMoodleReadySpreadsheet createMoodleReadySpreadsheet = new CreateMoodleReadySpreadsheet();
 
-    public boolean lineIsResidue(String line) {
+    private boolean lineIsResidue(String line) {
 
         String testLine = new String(new char[line.length()]).replace("\0", "\t");
         return line.matches(testLine) || line.isEmpty();
     }
 
-    public void readAndWriteFile() {
+    private String newFilePath(String originalPath){
+        //get original directory + add some stuff to the end (but before the csv)
+        //separate string by .tsv
+        //if xabu, throw exception
+        //add pronto_pro_moodle.csv to first option
+
+        String[] splitPath = originalPath.split(".tsv");
+        splitPath[0] += "_pronto_pro_moodle.csv";
+
+        return splitPath[0];
+    }
+
+    public void readAndWriteFile(String filePath) {
 
         List<List<String>> spreadsheetInfo = new ArrayList<>();
         int rowNumber = 0;
 
-        try (BufferedReader inputStream = new BufferedReader(new
-                FileReader("C:/Users/733120/Desktop/Scratch (respostas).tsv"));
+        try (BufferedReader inputStream = new BufferedReader(new FileReader(filePath));
              BufferedWriter outputStream = new BufferedWriter(new
-                     FileWriter("C:/Users/733120/Desktop/scratch_pronto_pro_moodle.csv"))) {
+                     FileWriter(newFilePath(filePath)))) {
             String line;
 
             while ((line = inputStream.readLine()) != null) {
