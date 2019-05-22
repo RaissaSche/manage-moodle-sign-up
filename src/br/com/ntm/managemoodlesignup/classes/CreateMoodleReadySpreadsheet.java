@@ -1,5 +1,7 @@
 package br.com.ntm.managemoodlesignup.classes;
 
+import java.text.Normalizer;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,47 +21,91 @@ public class CreateMoodleReadySpreadsheet {
 
     List<List<String>> spreadsheetMoodleReady = new ArrayList<>();
 
-    private void createUsername(List<String> nameRow) {
+    public void create(List<List<String>> spreadsheetInfo) {
 
-        spreadsheetMoodleReady.add(new ArrayList<>());
+        List<String> nameRow = findColumn.find("nome", spreadsheetInfo);
+
+        for (int i = 0; i < 6; i++){
+            spreadsheetMoodleReady.add(new ArrayList<>());
+        }
+
+        //username - 0
         spreadsheetMoodleReady.get(0).add("username");
-        System.out.println(spreadsheetMoodleReady.get(0).get(0));
+        createUsername(nameRow);
+
+        // password - 1
+        //generate from spreadsheet name + @ + current year
+        spreadsheetMoodleReady.get(1).add("password");
+        createPassword(nameRow);
+
+        // \firstname - 2
+        //get from spreadsheet
+        spreadsheetMoodleReady.get(2).add("firstname");
+        createFirstName(nameRow);
+
+        // lastname - 3
+        //get from spreadsheet
+        spreadsheetMoodleReady.get(3).add("lastname");
+
+        // email - 4
+        //get from spreadsheet
+        spreadsheetMoodleReady.get(4).add("email");
+
+        // course1 - 5
+        //ask for input on the program somehow
+        spreadsheetMoodleReady.get(5).add("course1");
+    }
+
+    private void createUsername(List<String> nameRow) {
 
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
+                name = stripAccents(name);
                 String[] nameAux = name.split(" ");
-               spreadsheetMoodleReady.get(0).add(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase());
+                spreadsheetMoodleReady.get(0).add(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase());
                 System.out.println(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase());
             }
         }
     }
 
-    public void create(List<List<String>> spreadsheetInfo) {
+    private void createPassword(List<String> nameRow) {
 
-        List<String> nameRow = findColumn.find("nome", spreadsheetInfo);
+        for (String name : nameRow) {
+            if (!name.toLowerCase().contains("nome")) {
+                name = stripAccents(name);
+                String[] nameAux = name.split(" ");
+                spreadsheetMoodleReady.get(1).add(nameAux[0] + "@" + Year.now());
+                System.out.println(nameAux[0] + "@" + Year.now());
+            }
+        }
+    }
 
-        //username
-        createUsername(nameRow);
+    private void createFirstName(List<String> nameRow) {
 
-        // password
-        //generate from spreadsheet name + @ + current year
-        //'Hello world I am Bob'.replace('Hello world', '')
-        spreadsheetMoodleReady.add(new ArrayList<>());
+        for (String name : nameRow) {
+            if (!name.toLowerCase().contains("nome")) {
+                String[] nameAux = name.split(" ");
+                spreadsheetMoodleReady.get(1).add(nameAux[0]);
+                System.out.println(nameAux[0]);
+            }
+        }
+    }
 
-        // \firstname
-        //get from spreadsheet
-        spreadsheetMoodleReady.add(new ArrayList<>());
+    private void createLastName(List<String> nameRow) {
 
-        // lastname
-        //get from spreadsheet
-        spreadsheetMoodleReady.add(new ArrayList<>());
+        for (String name : nameRow) {
+            if (!name.toLowerCase().contains("nome")) {
+                String[] nameAux = name.split(" ");
+                spreadsheetMoodleReady.get(1).add(nameAux[0]);
+                System.out.println(nameAux[0]);
+            }
+        }
+    }
 
-        // email\
-        //get from spreadsheet
-        spreadsheetMoodleReady.add(new ArrayList<>());
+    public static String stripAccents(String word) {
 
-        // course1
-        //ask for input on the program somehow
-        spreadsheetMoodleReady.add(new ArrayList<>());
+        word = Normalizer.normalize(word, Normalizer.Form.NFD);
+        word = word.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        return word;
     }
 }
