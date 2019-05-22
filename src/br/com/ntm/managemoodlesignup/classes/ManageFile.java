@@ -45,15 +45,14 @@ public class ManageFile {
                         info = info.trim();
                         spreadsheetInfo.get(rowNumber).add(info);
                     }
-                    System.out.println(spreadsheetInfo.get(rowNumber));
+                    //System.out.println(spreadsheetInfo.get(rowNumber));
                     rowNumber++;
 
                     outputStream.write(line);
                     outputStream.newLine();
                 }
             }
-            //createMoodleReadySpreadsheet.create(spreadsheetInfo);
-            findColumn.findEmail(spreadsheetInfo);
+            createMoodleReadySpreadsheet.create(spreadsheetInfo);
 
         } catch (IOException e) {
             e.printStackTrace();

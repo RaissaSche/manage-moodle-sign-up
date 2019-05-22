@@ -15,27 +15,35 @@ public class CreateMoodleReadySpreadsheet {
     //username password \firstname lastname email\ course1
 //exportar para csv (ler do original o nome e concatenar com algo tipo "moodle-ready")
 
-    FindColumn findColumn;
+    FindColumn findColumn = new FindColumn();
 
     List<List<String>> spreadsheetMoodleReady = new ArrayList<>();
 
+    private void createUsername(List<String> nameRow) {
 
-    public void create (List<List<String>> spreadsheetInfo) {
+        spreadsheetMoodleReady.add(new ArrayList<>());
+        spreadsheetMoodleReady.get(0).add("username");
+        System.out.println(spreadsheetMoodleReady.get(0).get(0));
+
+        for (String name : nameRow) {
+            if (!name.toLowerCase().contains("nome")) {
+                String[] nameAux = name.split(" ");
+               spreadsheetMoodleReady.get(0).add(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase());
+                System.out.println(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase());
+            }
+        }
+    }
+
+    public void create(List<List<String>> spreadsheetInfo) {
 
         List<String> nameRow = findColumn.find("nome", spreadsheetInfo);
 
         //username
-        //generate from spreadsheet name
-        spreadsheetMoodleReady.add(new ArrayList<>());
-        spreadsheetMoodleReady.get(0).add("username");
-
-        for (String name : nameRow) {
-            spreadsheetMoodleReady.get(0).add(name);
-            System.out.println(name);
-        }
+        createUsername(nameRow);
 
         // password
         //generate from spreadsheet name + @ + current year
+        //'Hello world I am Bob'.replace('Hello world', '')
         spreadsheetMoodleReady.add(new ArrayList<>());
 
         // \firstname
