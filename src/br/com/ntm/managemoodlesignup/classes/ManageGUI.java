@@ -14,10 +14,9 @@ public class ManageGUI {
 
         if (answer == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
-            System.out.println(file.getAbsolutePath());
 
             try {
-                manageFile.readAndWriteFile(file.getAbsolutePath());
+                manageFile.checkIfFileIsTSV(file.getAbsolutePath());
             } catch (Exception e) {
                 System.out.println("I caught: " + e);
                 JOptionPane.showMessageDialog(fileChooser,
@@ -26,10 +25,9 @@ public class ManageGUI {
                         JOptionPane.WARNING_MESSAGE);
             }
 
-        } else {
-            // dialogo cancelado
+            String courseInitials = JOptionPane.showInputDialog("Nome breve do curso:");
+            manageFile.readAndWriteFile(file.getAbsolutePath(), courseInitials);
         }
-
 
     }
 }

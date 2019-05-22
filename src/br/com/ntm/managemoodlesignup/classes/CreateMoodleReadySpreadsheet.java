@@ -23,7 +23,7 @@ public class CreateMoodleReadySpreadsheet {
 
     List<List<String>> spreadsheetMoodleReady = new ArrayList<>();
 
-    public void create(List<List<String>> spreadsheetInfo) {
+    public List<List<String>> create(List<List<String>> spreadsheetInfo, String courseInitials) {
 
         List<String> nameRow = findColumn.find("nome", spreadsheetInfo);
         List<String> emailRow = findColumn.findEmail(spreadsheetInfo);
@@ -33,41 +33,45 @@ public class CreateMoodleReadySpreadsheet {
         }
 
         //username - 0
-        spreadsheetMoodleReady.get(0).add("username");
+        spreadsheetMoodleReady.get(0).add("username;");
         createUsername(nameRow);
 
         // password - 1
-        spreadsheetMoodleReady.get(1).add("password");
+        spreadsheetMoodleReady.get(0).add("password;");
         createPassword(nameRow);
 
         // \firstname - 2
-        spreadsheetMoodleReady.get(2).add("firstname");
+        spreadsheetMoodleReady.get(0).add("firstname;");
         createFirstName(nameRow);
 
         // lastname - 3
-        spreadsheetMoodleReady.get(3).add("lastname");
+        spreadsheetMoodleReady.get(0).add("lastname;");
         createLastName(nameRow);
 
         // email - 4
-        spreadsheetMoodleReady.get(4).add("email");
+        spreadsheetMoodleReady.get(0).add("email;");
         createEmail(emailRow);
 
         // course1 - 5
-        //ask for input on the program somehow
-        spreadsheetMoodleReady.get(5).add("course1");
+        spreadsheetMoodleReady.get(0).add("course1;");
+        createCourse1(nameRow.size(), courseInitials);
+        return spreadsheetMoodleReady;
     }
 
     private void createUsername(List<String> nameRow) {
 
         System.out.println("username");
 
+        int row = 1;
+
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 name = stripAccents(name);
                 String[] nameAux = name.split(" ");
-                spreadsheetMoodleReady.get(0).add(nameAux[0].toLowerCase() +
-                        nameAux[nameAux.length - 1].toLowerCase());
-                System.out.println(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase());
+                spreadsheetMoodleReady.get(row).add(nameAux[0].toLowerCase() +
+                        nameAux[nameAux.length - 1].toLowerCase() + ";");
+                //System.out.println(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase()+ ";");
+                row++;
             }
         }
     }
@@ -76,12 +80,15 @@ public class CreateMoodleReadySpreadsheet {
 
         System.out.println("password");
 
+        int row = 1;
+
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 name = stripAccents(name);
                 String[] nameAux = name.split(" ");
-                spreadsheetMoodleReady.get(1).add(nameAux[0] + "@" + Year.now());
-                System.out.println(nameAux[0] + "@" + Year.now());
+                spreadsheetMoodleReady.get(row).add(nameAux[0] + "@" + Year.now() + ";");
+                //System.out.println(nameAux[0] + "@" + Year.now()+ ";");
+                row++;
             }
         }
     }
@@ -90,11 +97,14 @@ public class CreateMoodleReadySpreadsheet {
 
         System.out.println("firstname");
 
+        int row = 1;
+
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 String[] nameAux = name.split(" ");
-                spreadsheetMoodleReady.get(2).add(nameAux[0]);
-                System.out.println(nameAux[0]);
+                spreadsheetMoodleReady.get(row).add(nameAux[0] + ";");
+                //System.out.println(nameAux[0]+ ";");
+                row++;
             }
         }
     }
@@ -103,11 +113,14 @@ public class CreateMoodleReadySpreadsheet {
 
         System.out.println("lastname");
 
+        int row = 1;
+
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 String[] nameAux = name.split(" ");
-                spreadsheetMoodleReady.get(3).add(nameAux[nameAux.length - 1]);
-                System.out.println(nameAux[nameAux.length - 1]);
+                spreadsheetMoodleReady.get(row).add(nameAux[nameAux.length - 1] + ";");
+                //System.out.println(nameAux[nameAux.length - 1]+ ";");
+                row++;
             }
         }
     }
@@ -116,11 +129,24 @@ public class CreateMoodleReadySpreadsheet {
 
         System.out.println("email");
 
+        int row = 1;
+
         for (String email : emailRow) {
             if (!email.toLowerCase().contains("email") && !email.toLowerCase().contains("e-mail")) {
-                spreadsheetMoodleReady.get(3).add(email);
-                System.out.println(email);
+                spreadsheetMoodleReady.get(row).add(email + ";");
+                //System.out.println(email + ";");
+                row++;
             }
+        }
+    }
+
+    private void createCourse1(int numberOfRows, String courseInitials) {
+
+        int row = 1;
+
+        while (row < numberOfRows) {
+            spreadsheetMoodleReady.get(row).add(courseInitials);
+            row++;
         }
     }
 
