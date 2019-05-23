@@ -18,7 +18,6 @@ public class ManageGUI {
             try {
                 manageFile.checkIfFileIsTSV(file.getAbsolutePath());
             } catch (Exception e) {
-                System.out.println("I caught: " + e);
                 JOptionPane.showMessageDialog(fileChooser,
                         e.getMessage(),
                         "Aviso!",
@@ -27,16 +26,12 @@ public class ManageGUI {
 
             String courseInitials = JOptionPane.showInputDialog("Nome breve do curso:");
             manageFile.readAndWriteFile(file.getAbsolutePath(), courseInitials);
+
+            JOptionPane.showMessageDialog(fileChooser,
+                    "Feito! O novo arquivo está na mesma pasta que o que você inseriu!",
+                    "Pronto!",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
 
     }
 }
-
-      /*  JFileChooser chooser = new JFileChooser();
-        chooser.setFileFilter(new FileNameExtensionFilter("tsv"));
-        chooser.setAcceptAllFileFilterUsed(false);
-        if (chooser.showSaveDialog(null) != JFileChooser.APPROVE_OPTION)
-           return;
-        File file = chooser.getSelectedFile();
-        if (!file.getAbsolutePath().endsWith(".png"))
-           file = new File(file.getAbsolutePath() + ".png");*/

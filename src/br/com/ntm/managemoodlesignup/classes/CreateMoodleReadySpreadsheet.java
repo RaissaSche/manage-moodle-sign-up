@@ -60,8 +60,6 @@ public class CreateMoodleReadySpreadsheet {
 
     private void createUsername(List<String> nameRow) {
 
-        System.out.println("username");
-
         int row = 1;
 
         for (String name : nameRow) {
@@ -70,15 +68,12 @@ public class CreateMoodleReadySpreadsheet {
                 String[] nameAux = name.split(" ");
                 spreadsheetMoodleReady.get(row).add(nameAux[0].toLowerCase() +
                         nameAux[nameAux.length - 1].toLowerCase() + ";");
-                //System.out.println(nameAux[0].toLowerCase() + nameAux[nameAux.length - 1].toLowerCase()+ ";");
                 row++;
             }
         }
     }
 
     private void createPassword(List<String> nameRow) {
-
-        System.out.println("password");
 
         int row = 1;
 
@@ -87,7 +82,6 @@ public class CreateMoodleReadySpreadsheet {
                 name = stripAccents(name);
                 String[] nameAux = name.split(" ");
                 spreadsheetMoodleReady.get(row).add(nameAux[0] + "@" + Year.now() + ";");
-                //System.out.println(nameAux[0] + "@" + Year.now()+ ";");
                 row++;
             }
         }
@@ -95,15 +89,12 @@ public class CreateMoodleReadySpreadsheet {
 
     private void createFirstName(List<String> nameRow) {
 
-        System.out.println("firstname");
-
         int row = 1;
 
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 String[] nameAux = name.split(" ");
                 spreadsheetMoodleReady.get(row).add(nameAux[0] + ";");
-                //System.out.println(nameAux[0]+ ";");
                 row++;
             }
         }
@@ -111,15 +102,12 @@ public class CreateMoodleReadySpreadsheet {
 
     private void createLastName(List<String> nameRow) {
 
-        System.out.println("lastname");
-
         int row = 1;
 
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
                 String[] nameAux = name.split(" ");
                 spreadsheetMoodleReady.get(row).add(nameAux[nameAux.length - 1] + ";");
-                //System.out.println(nameAux[nameAux.length - 1]+ ";");
                 row++;
             }
         }
@@ -127,14 +115,11 @@ public class CreateMoodleReadySpreadsheet {
 
     private void createEmail(List<String> emailRow) {
 
-        System.out.println("email");
-
         int row = 1;
 
         for (String email : emailRow) {
             if (!email.toLowerCase().contains("email") && !email.toLowerCase().contains("e-mail")) {
                 spreadsheetMoodleReady.get(row).add(email + ";");
-                //System.out.println(email + ";");
                 row++;
             }
         }
