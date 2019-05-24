@@ -5,27 +5,14 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateMoodleReadySpreadsheet {
+class CreateMoodleReadySpreadsheet {
 
-    //ler do arquivo
-//guardar em uma matriz
-    //trim every variable!!
-    //throw things from strings to a (dynamic) matrix!! update: use collections!!
-//adicionar as colunas que preciso, jogando com as variáveis
-    //THE SUBLISTS ARE ROWS, THE STRINGS ARE COLUMNS
-    // ------------------------------------------------------------------------
-    //username password \firstname lastname email\ course1
-    //add GUI
-    //come back to course1 and file names
-//exportar para csv (ler do original o nome e concatenar com algo tipo "moodle-ready")
+    private FindColumn findColumn = new FindColumn();
+    private List<List<String>> spreadsheetMoodleReady = new ArrayList<>();
 
-    FindColumn findColumn = new FindColumn();
+    List<List<String>> create(List<List<String>> spreadsheetInfo, String courseInitials) {
 
-    List<List<String>> spreadsheetMoodleReady = new ArrayList<>();
-
-    public List<List<String>> create(List<List<String>> spreadsheetInfo, String courseInitials) {
-
-        List<String> nameRow = findColumn.find("nome", spreadsheetInfo);
+        List<String> nameRow = findColumn.findName(spreadsheetInfo);
         List<String> emailRow = findColumn.findEmail(spreadsheetInfo);
 
         for (int i = 0; i < 6; i++) {
@@ -135,7 +122,7 @@ public class CreateMoodleReadySpreadsheet {
         }
     }
 
-    public static String stripAccents(String word) {
+    private static String stripAccents(String word) {
 
         word = Normalizer.normalize(word, Normalizer.Form.NFD);
         word = word.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");

@@ -6,9 +6,9 @@ import br.com.ntm.managemoodlesignup.exceptions.EmailNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindColumn {
+class FindColumn {
 
-    public List<String> findEmail(List<List<String>> spreadsheetInfo) {
+    List<String> findEmail(List<List<String>> spreadsheetInfo) {
 
         List<String> firstRow = spreadsheetInfo.get(0);
 
@@ -30,14 +30,13 @@ public class FindColumn {
         throw new EmailNotFoundException();
     }
 
-    public List<String> find(String columnName, List<List<String>> spreadsheetInfo) {
-        //columnName variable must be lower-case
+    List<String> findName(List<List<String>> spreadsheetInfo) {
 
         List<String> firstRow = spreadsheetInfo.get(0);
 
         for (int i = 0; i < firstRow.size(); i++) {
 
-            if (firstRow.get(i).toLowerCase().contains(columnName)) {
+            if (firstRow.get(i).toLowerCase().contains("nome")) {
 
                 List<String> nameColumn = new ArrayList<>();
 

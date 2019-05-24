@@ -5,10 +5,9 @@ import java.io.File;
 
 public class ManageGUI {
 
-    boolean showSelectPrompt = true;
-
-    ManageFile manageFile = new ManageFile();
-    File file;
+    private boolean showSelectPrompt = true;
+    private ManageFile manageFile = new ManageFile();
+    private File file;
 
     public void manageGUI() {
 
