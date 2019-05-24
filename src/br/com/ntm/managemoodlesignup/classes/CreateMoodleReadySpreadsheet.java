@@ -40,7 +40,7 @@ class CreateMoodleReadySpreadsheet {
         createEmail(emailRow);
 
         // course1 - 5
-        spreadsheetMoodleReady.get(0).add("course1;");
+        spreadsheetMoodleReady.get(0).add("course1");
         createCourse1(nameRow.size(), courseInitials);
         return spreadsheetMoodleReady;
     }
