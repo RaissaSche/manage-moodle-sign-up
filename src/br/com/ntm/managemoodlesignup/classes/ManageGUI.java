@@ -17,12 +17,18 @@ public class ManageGUI {
 
             int answer = fileChooser.showOpenDialog(null);
 
+            if (answer == JFileChooser.CANCEL_OPTION) {
+                showSelectPrompt = false;
+                System.exit(0);
+            }
+
             if (answer == JFileChooser.APPROVE_OPTION) {
                 file = fileChooser.getSelectedFile();
 
                 try {
                     manageFile.checkIfFileIsTSV(file.getAbsolutePath());
                     showSelectPrompt = false;
+
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(fileChooser,
                             e.getMessage(),
@@ -31,6 +37,7 @@ public class ManageGUI {
                 }
             }
         }
+
         String courseInitials = JOptionPane.showInputDialog("Nome breve do curso:");
         manageFile.readAndWriteFile(file.getAbsolutePath(), courseInitials);
 

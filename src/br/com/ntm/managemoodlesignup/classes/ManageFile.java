@@ -6,11 +6,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
- class ManageFile {
+class ManageFile {
 
     private CreateMoodleReadySpreadsheet createMoodleReadySpreadsheet = new CreateMoodleReadySpreadsheet();
 
-     boolean checkIfFileIsTSV(String originalPath) {
+    boolean checkIfFileIsTSV(String originalPath) {
 
         if (!originalPath.contains(".tsv")) {
             throw new WrongFileExtensionException();
@@ -18,7 +18,7 @@ import java.util.List;
         return true;
     }
 
-     private String newFilePath(String originalPath) {
+    private String newFilePath(String originalPath) {
 
         if (checkIfFileIsTSV(originalPath)) {
             String[] splitPath = originalPath.split(".tsv");
@@ -34,7 +34,7 @@ import java.util.List;
         return line.matches(testLine) || line.isEmpty();
     }
 
-     void readAndWriteFile(String filePath, String courseInitials) {
+    void readAndWriteFile(String filePath, String courseInitials) {
 
         List<List<String>> spreadsheetInfo = new ArrayList<>();
         int rowNumber = 0;
