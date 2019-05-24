@@ -3,6 +3,10 @@ package br.com.ntm.managemoodlesignup.classes;
 import br.com.ntm.managemoodlesignup.exceptions.WrongFileExtensionException;
 
 import java.io.*;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,10 +42,9 @@ class ManageFile {
 
         List<List<String>> spreadsheetInfo = new ArrayList<>();
         int rowNumber = 0;
+        String newFilePath = newFilePath(filePath);
 
-        try (BufferedReader inputStream = new BufferedReader(new FileReader(filePath));
-             BufferedWriter outputStream = new BufferedWriter(new
-                     FileWriter(newFilePath(filePath)))) {
+        try (BufferedReader inputStream = new BufferedReader(new FileReader(filePath))) {
             String line;
 
             while ((line = inputStream.readLine()) != null) {
@@ -60,6 +63,8 @@ class ManageFile {
             }
 
             List<List<String>> spreadsheetMoodleReady = createMoodleReadySpreadsheet.create(spreadsheetInfo, courseInitials);
+
+            BufferedWriter outputStream = new BufferedWriter(new FileWriter(newFilePath));
 
             for (List<String> list : spreadsheetMoodleReady) {
                 for (String row : list) {
