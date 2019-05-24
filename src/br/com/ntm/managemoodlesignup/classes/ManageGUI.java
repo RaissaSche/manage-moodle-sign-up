@@ -53,4 +53,3 @@ public class ManageGUI {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 }
-
