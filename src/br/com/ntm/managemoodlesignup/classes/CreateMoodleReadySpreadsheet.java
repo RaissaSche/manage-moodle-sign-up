@@ -15,7 +15,7 @@ class CreateMoodleReadySpreadsheet {
         List<String> nameRow = findColumn.findName(spreadsheetInfo);
         List<String> emailRow = findColumn.findEmail(spreadsheetInfo);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < nameRow.size(); i++) {
             spreadsheetMoodleReady.add(new ArrayList<>());
         }
 

@@ -12,7 +12,7 @@ public class ManageGUI {
     public void manageGUI() {
 
         JFileChooser fileChooser = new JFileChooser();
-
+        fileChooser.setCurrentDirectory(new File("."));
         JOptionPane.showMessageDialog(fileChooser,
                 "Por favor insira a planilha com as informações na tela a seguir.\n" +
                         "Não esqueça que precisa ser no formato .tsv!",
