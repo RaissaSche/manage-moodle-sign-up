@@ -47,7 +47,6 @@ class ManageFile {
             }
 
             int rowNum = 1;
-            List<String> printAux = new ArrayList<>();
 
             for (List<String> list : spreadsheetMoodleReady) {
                 for (String row : list) {
@@ -58,7 +57,7 @@ class ManageFile {
                         System.out.println("Usuário: " + newRow[0]);
                     } else if (rowNum == 2) {
                         System.out.println("Senha: " + newRow[0] + "(a primeira letra em maiúsculo)");
-                    }else if (rowNum == 5) {
+                    } else if (rowNum == 5) {
                         System.out.println(newRow[0]);
                         System.out.println("-----------------------");
                     }
