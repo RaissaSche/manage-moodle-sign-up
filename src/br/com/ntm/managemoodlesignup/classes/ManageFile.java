@@ -34,6 +34,45 @@ class ManageFile {
         return line.matches(testLine) || line.isEmpty();
     }
 
+    private void printInfo(List<List<String>> spreadsheetMoodleReady, BufferedWriter outputStream) {
+
+        try {
+
+            for (List<String> list : spreadsheetMoodleReady) {
+                for (String row : list) {
+                    outputStream.write(row);
+                    //System.out.println(row);
+                }
+                outputStream.newLine();
+            }
+
+            int rowNum = 1;
+            List<String> printAux = new ArrayList<>();
+
+            for (List<String> list : spreadsheetMoodleReady) {
+                for (String row : list) {
+
+                    String newRow[] = row.split(";");
+
+                    if (rowNum == 1) {
+                        System.out.println("Usuário: " + newRow[0]);
+                    } else if (rowNum == 2) {
+                        System.out.println("Senha: " + newRow[0] + "(a primeira letra em maiúsculo)");
+                    }else if (rowNum == 5) {
+                        System.out.println(newRow[0]);
+                        System.out.println("-----------------------");
+                    }
+                    rowNum++;
+                }
+                rowNum = 1;
+                outputStream.newLine();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     void readAndWriteFile(String filePath, String courseInitials) {
 
         List<List<String>> spreadsheetInfo = new ArrayList<>();
@@ -60,13 +99,7 @@ class ManageFile {
 
             List<List<String>> spreadsheetMoodleReady = createMoodleReadySpreadsheet.create(spreadsheetInfo, courseInitials);
 
-            for (List<String> list : spreadsheetMoodleReady) {
-                for (String row : list) {
-                    outputStream.write(row);
-                    System.out.println(row);
-                }
-                outputStream.newLine();
-            }
+            printInfo(spreadsheetMoodleReady, outputStream);
 
         } catch (IOException e) {
             e.printStackTrace();
