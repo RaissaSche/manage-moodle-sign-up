@@ -40,11 +40,11 @@ class CreateMoodleReadySpreadsheet {
         createEmail(emailRow);
 
         // course1 - 5
-        spreadsheetMoodleReady.get(0).add("course1");
+        spreadsheetMoodleReady.get(0).add("course1;");
         createCourse1(nameRow.size(), courseInitials);
 
         // role1 - 6
-        spreadsheetMoodleReady.get(0).add("role1");
+        spreadsheetMoodleReady.get(0).add("role1;");
         createRole1(nameRow.size());
 
         return spreadsheetMoodleReady;
@@ -122,7 +122,7 @@ class CreateMoodleReadySpreadsheet {
         int row = 1;
 
         while (row < numberOfRows) {
-            spreadsheetMoodleReady.get(row).add(courseInitials);
+            spreadsheetMoodleReady.get(row).add(courseInitials + ";");
             row++;
         }
     }
@@ -132,7 +132,7 @@ class CreateMoodleReadySpreadsheet {
         int row = 1;
 
         while (row < numberOfRows) {
-            spreadsheetMoodleReady.get(row).add("student");
+            spreadsheetMoodleReady.get(row).add("student;");
             row++;
         }
     }
