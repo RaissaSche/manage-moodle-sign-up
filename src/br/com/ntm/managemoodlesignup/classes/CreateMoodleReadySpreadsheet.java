@@ -95,13 +95,28 @@ class CreateMoodleReadySpreadsheet {
     private void createLastName(List<String> nameRow) {
 
         int row = 1;
+        List<String> fullLastName = new ArrayList<>();
 
         for (String name : nameRow) {
             if (!name.toLowerCase().contains("nome")) {
-                String[] nameAux = name.split(" ");
-                spreadsheetMoodleReady.get(row).add(nameAux[nameAux.length - 1] + ";");
+                String[] lastNameAux = name.split(" ");
+
+                for (int i = 0; i < lastNameAux.length; i++) {
+                    if (i != 0) {
+                        fullLastName.add(lastNameAux[i]);
+                        fullLastName.add(" ");
+                    }
+                }
+
+                for (String word : fullLastName) {
+                    spreadsheetMoodleReady.get(row).add(word);
+                }
+
+                spreadsheetMoodleReady.get(row).add(";");
                 row++;
             }
+
+            fullLastName = new ArrayList<>();
         }
     }
 

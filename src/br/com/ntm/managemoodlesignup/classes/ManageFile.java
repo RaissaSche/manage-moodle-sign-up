@@ -56,7 +56,7 @@ class ManageFile {
                     if (rowNum == 1) {
                         System.out.println("Usuário: " + newRow[0]);
                     } else if (rowNum == 2) {
-                        System.out.println("Senha: " + newRow[0] + "(a primeira letra em maiúsculo)");
+                        System.out.println("Senha: " + newRow[0] + " (a primeira letra em maiúsculo)");
                     } else if (rowNum == 5) {
                         System.out.println(newRow[0]);
                         System.out.println("-----------------------");
